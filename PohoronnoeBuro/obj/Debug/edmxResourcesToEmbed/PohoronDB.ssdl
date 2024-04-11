@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище uchModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChekProduct">
+    <Key>
+      <PropertyRef Name="ID_ChekProduct" />
+    </Key>
+    <Property Name="ID_ChekProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_ID" Type="int" Nullable="false" />
+    <Property Name="Info_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID_Employees" />
+    </Key>
+    <Property Name="ID_Employees" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="Rolb_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Info">
+    <Key>
+      <PropertyRef Name="ID_INFO" />
+    </Key>
+    <Property Name="ID_INFO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateInfo" Type="date" Nullable="false" />
+    <Property Name="PaymentMethod_ID" Type="int" Nullable="false" />
+    <Property Name="Stock_ID" Type="int" />
+    <Property Name="Employees_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InsuranceCompany">
+    <Key>
+      <PropertyRef Name="ID_InsuranceCompany" />
+    </Key>
+    <Property Name="ID_InsuranceCompany" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameOfInsuranceCompany" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="ID_PaymentMethod" />
+    </Key>
+    <Property Name="ID_PaymentMethod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NamePaymentMethod" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plot">
+    <Key>
+      <PropertyRef Name="ID_Plot" />
+    </Key>
+    <Property Name="ID_Plot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NamePlot" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID_Product" />
+    </Key>
+    <Property Name="ID_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameOfProduct" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="InsuranceCompany_ID" Type="int" />
+    <Property Name="ProductCategory_ID" Type="int" Nullable="false" />
+    <Property Name="Plot_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ID_ProductCategory" />
+    </Key>
+    <Property Name="ID_ProductCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameOfProductCategory" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Rolb">
+    <Key>
+      <PropertyRef Name="ID_Rolb" />
+    </Key>
+    <Property Name="ID_Rolb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="ID_Stock" />
+    </Key>
+    <Property Name="ID_Stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameStock" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__ChekProdu__Info___6383C8BA">
+    <End Role="Info" Type="Self.Info" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChekProduct" Type="Self.ChekProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Info">
+        <PropertyRef Name="ID_INFO" />
+      </Principal>
+      <Dependent Role="ChekProduct">
+        <PropertyRef Name="Info_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChekProdu__Produ__628FA481">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChekProduct" Type="Self.ChekProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_Product" />
+      </Principal>
+      <Dependent Role="ChekProduct">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__Rolb___4CA06362">
+    <End Role="Rolb" Type="Self.Rolb" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rolb">
+        <PropertyRef Name="ID_Rolb" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="Rolb_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Info__Employees___5535A963">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Info" Type="Self.Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID_Employees" />
+      </Principal>
+      <Dependent Role="Info">
+        <PropertyRef Name="Employees_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Info__PaymentMet__534D60F1">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Info" Type="Self.Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="ID_PaymentMethod" />
+      </Principal>
+      <Dependent Role="Info">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Info__Stock_ID__5441852A">
+    <End Role="Stock" Type="Self.Stock" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Info" Type="Self.Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock">
+        <PropertyRef Name="ID_Stock" />
+      </Principal>
+      <Dependent Role="Info">
+        <PropertyRef Name="Stock_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Insuran__5DCAEF64">
+    <End Role="InsuranceCompany" Type="Self.InsuranceCompany" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsuranceCompany">
+        <PropertyRef Name="ID_InsuranceCompany" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="InsuranceCompany_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Plot_ID__5FB337D6">
+    <End Role="Plot" Type="Self.Plot" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plot">
+        <PropertyRef Name="ID_Plot" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Plot_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__5EBF139D">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ID_ProductCategory" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище uchModelContainer">
+    <EntitySet Name="ChekProduct" EntityType="Self.ChekProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Info" EntityType="Self.Info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plot" EntityType="Self.Plot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rolb" EntityType="Self.Rolb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChekProdu__Info___6383C8BA" Association="Self.FK__ChekProdu__Info___6383C8BA">
+      <End Role="Info" EntitySet="Info" />
+      <End Role="ChekProduct" EntitySet="ChekProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChekProdu__Produ__628FA481" Association="Self.FK__ChekProdu__Produ__628FA481">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ChekProduct" EntitySet="ChekProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__Rolb___4CA06362" Association="Self.FK__Employees__Rolb___4CA06362">
+      <End Role="Rolb" EntitySet="Rolb" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Info__Employees___5535A963" Association="Self.FK__Info__Employees___5535A963">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Info" EntitySet="Info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Info__PaymentMet__534D60F1" Association="Self.FK__Info__PaymentMet__534D60F1">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="Info" EntitySet="Info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Info__Stock_ID__5441852A" Association="Self.FK__Info__Stock_ID__5441852A">
+      <End Role="Stock" EntitySet="Stock" />
+      <End Role="Info" EntitySet="Info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Insuran__5DCAEF64" Association="Self.FK__Product__Insuran__5DCAEF64">
+      <End Role="InsuranceCompany" EntitySet="InsuranceCompany" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Plot_ID__5FB337D6" Association="Self.FK__Product__Plot_ID__5FB337D6">
+      <End Role="Plot" EntitySet="Plot" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__5EBF139D" Association="Self.FK__Product__Product__5EBF139D">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

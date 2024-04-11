@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="uchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChekProduct">
+    <Key>
+      <PropertyRef Name="ID_ChekProduct" />
+    </Key>
+    <Property Name="ID_ChekProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="Info_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Info" Relationship="Self.FK__ChekProdu__Info___6383C8BA" FromRole="ChekProduct" ToRole="Info" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ChekProdu__Produ__628FA481" FromRole="ChekProduct" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID_Employees" />
+    </Key>
+    <Property Name="ID_Employees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rolb_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rolb" Relationship="Self.FK__Employees__Rolb___4CA06362" FromRole="Employees" ToRole="Rolb" />
+    <NavigationProperty Name="Info" Relationship="Self.FK__Info__Employees___5535A963" FromRole="Employees" ToRole="Info" />
+  </EntityType>
+  <EntityType Name="Info">
+    <Key>
+      <PropertyRef Name="ID_INFO" />
+    </Key>
+    <Property Name="ID_INFO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateInfo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PaymentMethod_ID" Type="Int32" Nullable="false" />
+    <Property Name="Stock_ID" Type="Int32" />
+    <Property Name="Employees_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChekProduct" Relationship="Self.FK__ChekProdu__Info___6383C8BA" FromRole="Info" ToRole="ChekProduct" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Info__Employees___5535A963" FromRole="Info" ToRole="Employees" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Info__PaymentMet__534D60F1" FromRole="Info" ToRole="PaymentMethod" />
+    <NavigationProperty Name="Stock" Relationship="Self.FK__Info__Stock_ID__5441852A" FromRole="Info" ToRole="Stock" />
+  </EntityType>
+  <EntityType Name="InsuranceCompany">
+    <Key>
+      <PropertyRef Name="ID_InsuranceCompany" />
+    </Key>
+    <Property Name="ID_InsuranceCompany" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameOfInsuranceCompany" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__Insuran__5DCAEF64" FromRole="InsuranceCompany" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="ID_PaymentMethod" />
+    </Key>
+    <Property Name="ID_PaymentMethod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamePaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Info" Relationship="Self.FK__Info__PaymentMet__534D60F1" FromRole="PaymentMethod" ToRole="Info" />
+  </EntityType>
+  <EntityType Name="Plot">
+    <Key>
+      <PropertyRef Name="ID_Plot" />
+    </Key>
+    <Property Name="ID_Plot" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamePlot" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__Plot_ID__5FB337D6" FromRole="Plot" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID_Product" />
+    </Key>
+    <Property Name="ID_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameOfProduct" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="InsuranceCompany_ID" Type="Int32" />
+    <Property Name="ProductCategory_ID" Type="Int32" Nullable="false" />
+    <Property Name="Plot_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChekProduct" Relationship="Self.FK__ChekProdu__Produ__628FA481" FromRole="Product" ToRole="ChekProduct" />
+    <NavigationProperty Name="InsuranceCompany" Relationship="Self.FK__Product__Insuran__5DCAEF64" FromRole="Product" ToRole="InsuranceCompany" />
+    <NavigationProperty Name="Plot" Relationship="Self.FK__Product__Plot_ID__5FB337D6" FromRole="Product" ToRole="Plot" />
+    <NavigationProperty Name="ProductCategory" Relationship="Self.FK__Product__Product__5EBF139D" FromRole="Product" ToRole="ProductCategory" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ID_ProductCategory" />
+    </Key>
+    <Property Name="ID_ProductCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameOfProductCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__5EBF139D" FromRole="ProductCategory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Rolb">
+    <Key>
+      <PropertyRef Name="ID_Rolb" />
+    </Key>
+    <Property Name="ID_Rolb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Rolb___4CA06362" FromRole="Rolb" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="ID_Stock" />
+    </Key>
+    <Property Name="ID_Stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameStock" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Info" Relationship="Self.FK__Info__Stock_ID__5441852A" FromRole="Stock" ToRole="Info" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__ChekProdu__Info___6383C8BA">
+    <End Role="Info" Type="Self.Info" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChekProduct" Type="Self.ChekProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Info">
+        <PropertyRef Name="ID_INFO" />
+      </Principal>
+      <Dependent Role="ChekProduct">
+        <PropertyRef Name="Info_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChekProdu__Produ__628FA481">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChekProduct" Type="Self.ChekProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID_Product" />
+      </Principal>
+      <Dependent Role="ChekProduct">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__Rolb___4CA06362">
+    <End Role="Rolb" Type="Self.Rolb" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rolb">
+        <PropertyRef Name="ID_Rolb" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="Rolb_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Info__Employees___5535A963">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Info" Type="Self.Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID_Employees" />
+      </Principal>
+      <Dependent Role="Info">
+        <PropertyRef Name="Employees_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Info__PaymentMet__534D60F1">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Info" Type="Self.Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="ID_PaymentMethod" />
+      </Principal>
+      <Dependent Role="Info">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Info__Stock_ID__5441852A">
+    <End Role="Stock" Type="Self.Stock" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Info" Type="Self.Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock">
+        <PropertyRef Name="ID_Stock" />
+      </Principal>
+      <Dependent Role="Info">
+        <PropertyRef Name="Stock_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Insuran__5DCAEF64">
+    <End Role="InsuranceCompany" Type="Self.InsuranceCompany" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsuranceCompany">
+        <PropertyRef Name="ID_InsuranceCompany" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="InsuranceCompany_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Plot_ID__5FB337D6">
+    <End Role="Plot" Type="Self.Plot" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plot">
+        <PropertyRef Name="ID_Plot" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Plot_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__5EBF139D">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ID_ProductCategory" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="uchEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChekProduct" EntityType="Self.ChekProduct" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="Info" EntityType="Self.Info" />
+    <EntitySet Name="InsuranceCompany" EntityType="Self.InsuranceCompany" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="Plot" EntityType="Self.Plot" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" />
+    <EntitySet Name="Rolb" EntityType="Self.Rolb" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__ChekProdu__Info___6383C8BA" Association="Self.FK__ChekProdu__Info___6383C8BA">
+      <End Role="Info" EntitySet="Info" />
+      <End Role="ChekProduct" EntitySet="ChekProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChekProdu__Produ__628FA481" Association="Self.FK__ChekProdu__Produ__628FA481">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ChekProduct" EntitySet="ChekProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__Rolb___4CA06362" Association="Self.FK__Employees__Rolb___4CA06362">
+      <End Role="Rolb" EntitySet="Rolb" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Info__Employees___5535A963" Association="Self.FK__Info__Employees___5535A963">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Info" EntitySet="Info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Info__PaymentMet__534D60F1" Association="Self.FK__Info__PaymentMet__534D60F1">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="Info" EntitySet="Info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Info__Stock_ID__5441852A" Association="Self.FK__Info__Stock_ID__5441852A">
+      <End Role="Stock" EntitySet="Stock" />
+      <End Role="Info" EntitySet="Info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Insuran__5DCAEF64" Association="Self.FK__Product__Insuran__5DCAEF64">
+      <End Role="InsuranceCompany" EntitySet="InsuranceCompany" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Plot_ID__5FB337D6" Association="Self.FK__Product__Plot_ID__5FB337D6">
+      <End Role="Plot" EntitySet="Plot" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__5EBF139D" Association="Self.FK__Product__Product__5EBF139D">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

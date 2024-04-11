@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d30261652be74636b26c0d0693658fde" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="uchModel.ChekProduct" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.Employees" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.Info" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.InsuranceCompany" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.Plot" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.ProductCategory" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.Rolb" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.Stock" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="uchModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="uchModel.FK__ChekProdu__Info___6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__ChekProdu__Produ__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Employees__Rolb___4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Info__Employees___5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Info__PaymentMet__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Info__Stock_ID__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Product__Insuran__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Product__Plot_ID__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="uchModel.FK__Product__Product__5EBF139D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="PohoronnoeBuro.KassaPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PohoronnoeBuro"
+        mc:Ignorable="d"
+        Title="KassaPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="EmployDgr" Grid.ColumnSpan="1" Grid.Row="2" AutoGenerateColumns="False" SelectionChanged="EmployDgr_SelectionChanged" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID_Product}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding NameOfProduct}" Header="Name of product"/>
+                <DataGridTextColumn Binding="{Binding Price}" Header="Price"/>
+                <DataGridTextColumn Binding="{Binding InsuranceCompany.NameOfInsuranceCompany}" Header="NameOfInsuranceCompany"/>
+                <DataGridTextColumn Binding="{Binding Plot.NamePlot}" Header="Password"/>
+                <DataGridTextColumn Binding="{Binding ProductCategory.NameOfProductCategory}" Header="Role"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="AddBut" Grid.Row="2" Margin="533,140,27,26" Content="Добавит" Click="AddBut_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="UpdBut" Grid.Row="2" Margin="533,68,27,98" Content="Изменить" Click="UpdBut_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="DeleteBut" Grid.Row="2" Margin="533,0,27,167" Content="Удалить" Click="DeleteBut_Click" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="NameProdTBx" Grid.Row="3" Height="40px" Margin="0,10,407,25"/>
+        <TextBox x:Name="PriceTBx" Grid.Row="3" Height="40px" Margin="135,10,271,25" RenderTransformOrigin="0.787,0.666" />
+        <ComboBox x:Name="InsureCBx" Margin="10,10,27,28" Grid.Row="3" Grid.Column="1" DisplayMemberPath="NameOfInsuranceCompany" SelectedValuePath="ID_InsuranceCompany"/>
+        <ComboBox x:Name="CategoryCBx" Margin="267,10,138,28" Grid.Row="3" DisplayMemberPath="NameOfProductCategory" SelectedValuePath="ID_ProductCategory"/>
+        <ComboBox x:Name="PlotCBx" Margin="400,10,4,28" Grid.Row="3" DisplayMemberPath="NamePlot" SelectedValuePath="ID_Plot"/>
+        <ComboBox x:Name="FiltrCBx" Margin="4,20,133,17" DisplayMemberPath="NameOfProductCategory" Grid.Column="1" SelectionChanged="FiltrCBx_SelectionChanged"/>
+        <TextBox x:Name="SearchTBx" Margin="139,25,5,25" RenderTransformOrigin="0.787,0.666" Grid.Column="1" />
+        <Button x:Name="SearchBut" Margin="220,51,5,0" Grid.Column="1" Content="Найти" FontSize="8" Click="SearchBut_Click"/>
+        <Button x:Name="RexetBut"  Margin="139,51,80,0" Grid.Column="1" Content="Очистить" FontSize="8" Click="RexetBut_Click"/>
+        <Button x:Name="ToInsureWin" Margin="116,19,319,29" Click="ToInsureWin_Click" Content="Страховые ком" Grid.Row="1"/>
+        <Button x:Name="ToPlotWin" Margin="10,19,441,29" Click="ToPlotWin_Click" Content="Участки" Grid.Row="1" RenderTransformOrigin="0.802,0.563"/>
+        <Button x:Name="ToPaymentMetWin" Margin="225,19,216,29" Click="ToPaymentMetWin_Click" Content="Способы оплаты" Grid.Row="1"/>
+        <Button x:Name="ToStockMetWin" Margin="331,19,110,29" Click="ToStockMetWin_Click" Content="Акции" Grid.Row="1"/>
+        <Button x:Name="ToCategoriiWin" Margin="431,19,10,29" Click="ToCategoriiWin_Click" Content="Категории" Grid.Row="1"/>
+        <Button x:Name="ToInfoWin" Margin="10,19,164,29" Click="ToInfoWin_Click" Content="Инфо" Grid.Row="1" Grid.Column="1"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище uchModelContainer" CdmEntityContainer="uchEntities">
+    <EntitySetMapping Name="ChekProduct">
+      <EntityTypeMapping TypeName="uchModel.ChekProduct">
+        <MappingFragment StoreEntitySet="ChekProduct">
+          <ScalarProperty Name="ID_ChekProduct" ColumnName="ID_ChekProduct" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Info_ID" ColumnName="Info_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="uchModel.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID_Employees" ColumnName="ID_Employees" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="Rolb_ID" ColumnName="Rolb_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Info">
+      <EntityTypeMapping TypeName="uchModel.Info">
+        <MappingFragment StoreEntitySet="Info">
+          <ScalarProperty Name="ID_INFO" ColumnName="ID_INFO" />
+          <ScalarProperty Name="DateInfo" ColumnName="DateInfo" />
+          <ScalarProperty Name="PaymentMethod_ID" ColumnName="PaymentMethod_ID" />
+          <ScalarProperty Name="Stock_ID" ColumnName="Stock_ID" />
+          <ScalarProperty Name="Employees_ID" ColumnName="Employees_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsuranceCompany">
+      <EntityTypeMapping TypeName="uchModel.InsuranceCompany">
+        <MappingFragment StoreEntitySet="InsuranceCompany">
+          <ScalarProperty Name="ID_InsuranceCompany" ColumnName="ID_InsuranceCompany" />
+          <ScalarProperty Name="NameOfInsuranceCompany" ColumnName="NameOfInsuranceCompany" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethod">
+      <EntityTypeMapping TypeName="uchModel.PaymentMethod">
+        <MappingFragment StoreEntitySet="PaymentMethod">
+          <ScalarProperty Name="ID_PaymentMethod" ColumnName="ID_PaymentMethod" />
+          <ScalarProperty Name="NamePaymentMethod" ColumnName="NamePaymentMethod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plot">
+      <EntityTypeMapping TypeName="uchModel.Plot">
+        <MappingFragment StoreEntitySet="Plot">
+          <ScalarProperty Name="ID_Plot" ColumnName="ID_Plot" />
+          <ScalarProperty Name="NamePlot" ColumnName="NamePlot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="uchModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+          <ScalarProperty Name="NameOfProduct" ColumnName="NameOfProduct" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="InsuranceCompany_ID" ColumnName="InsuranceCompany_ID" />
+          <ScalarProperty Name="ProductCategory_ID" ColumnName="ProductCategory_ID" />
+          <ScalarProperty Name="Plot_ID" ColumnName="Plot_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategory">
+      <EntityTypeMapping TypeName="uchModel.ProductCategory">
+        <MappingFragment StoreEntitySet="ProductCategory">
+          <ScalarProperty Name="ID_ProductCategory" ColumnName="ID_ProductCategory" />
+          <ScalarProperty Name="NameOfProductCategory" ColumnName="NameOfProductCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rolb">
+      <EntityTypeMapping TypeName="uchModel.Rolb">
+        <MappingFragment StoreEntitySet="Rolb">
+          <ScalarProperty Name="ID_Rolb" ColumnName="ID_Rolb" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stock">
+      <EntityTypeMapping TypeName="uchModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="ID_Stock" ColumnName="ID_Stock" />
+          <ScalarProperty Name="NameStock" ColumnName="NameStock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="uchModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
